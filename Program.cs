@@ -11,26 +11,16 @@ namespace SampleSpace
         static async Task<int> Main(string[] args)
         {
 
-            // Create a single argument input to command
-            var singleArgument = new Argument<int[]>
-            (name: "number",
-            description: "An argument that is parsed as an int.",
-            getDefaultValue: () => [0]);
-
 
             // Create a sub command with a description
             var subCommand = new Command("number", "SubCommand with arguments");
 
-            subCommand.Add(singleArgument);
 
-            subCommand.SetHandler((singleArgumentValue)=>{
+            subCommand.SetHandler(()=>{
 
-                foreach(int value in singleArgumentValue)
-                {
-                    Console.WriteLine("Your input {0}", value);
-                }
+                Console.WriteLine("Sub Command");
 
-            }, singleArgument);
+            });
 
             // Create a root command with a description
             var rootCommand = new RootCommand
