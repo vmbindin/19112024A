@@ -17,17 +17,20 @@ namespace SampleSpace
             };
 
             // Create a single argument input to command
-            var singleArgument = new Argument<int>
+            var singleArgument = new Argument<int[]>
             (name: "number",
             description: "An argument that is parsed as an int.",
-            getDefaultValue: () => 0);
+            getDefaultValue: () => [0]);
 
 
             rootCommand.Add(singleArgument);
 
             rootCommand.SetHandler((singleArgumentValue)=>{
 
-                Console.WriteLine("Your input {0}", singleArgumentValue);
+                foreach(int value in singleArgumentValue)
+                {
+                    Console.WriteLine("Your input {0}", value);
+                }
 
 
             }, singleArgument);
